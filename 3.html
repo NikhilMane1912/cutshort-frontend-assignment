@@ -1,0 +1,247 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+
+        body {
+            background-color: #E9ECF4;
+            font-family: 'Inter var', sans-serif;
+        }
+
+        .new-background {
+            background-color: #FFFFFF;
+            width: 1024px;
+            padding: 50px 300px 50px 300px;
+        }
+
+        .stepper-wrapper {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .stepper-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+
+            @media (max-width: 768px) {
+                font-size: 12px;
+            }
+        }
+
+        .stepper-item::before {
+            position: absolute;
+            content: "";
+            border-bottom: 2px solid #ccc;
+            width: 100%;
+            top: 20px;
+            left: -50%;
+            z-index: 2;
+        }
+
+        .stepper-item::after {
+            position: absolute;
+            content: "";
+            border-bottom: 2px solid #ccc;
+            width: 100%;
+            top: 20px;
+            left: 50%;
+            z-index: 2;
+            color: #FFFFFF;
+        }
+
+        .stepper-item .step-counter {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            background: #ffffff;
+            margin-bottom: 6px;
+            color: #000000;
+        }
+
+        .stepper-item.active {
+            /* font-weight: bold; */
+        }
+
+        .stepper-item.active .step-counter {
+            background-color: #4338CA;
+            color: #FFFFFF;
+        }
+
+        .stepper-item.active::after {
+            position: absolute;
+            content: "";
+            border-bottom: 2px solid #4338CA;
+            width: 50%;
+            top: 20px;
+            left: 50%;
+            z-index: 3;
+        }
+
+        .stepper-item.completed .step-counter {
+            background-color: #4338CA;
+            color: #FFFFFF;
+        }
+
+        .stepper-item.completed::after {
+            position: absolute;
+            content: "";
+            border-bottom: 2px solid #4338CA;
+            width: 100%;
+            top: 20px;
+            left: 50%;
+            z-index: 3;
+        }
+
+        .stepper-item:first-child::before {
+            content: none;
+        }
+
+        .stepper-item:last-child::after {
+            content: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="new-background">
+            <div class="max-w-md w-full space-y-8 items-center">
+                <div class="display:inline">
+                    <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                        alt="Workflow">
+                    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Eden</h2>
+                </div>
+                <div class="stepper-wrapper">
+                    <div class="stepper-item completed">
+                        <div class="step-counter">1</div>
+                    </div>
+                    <div class="stepper-item completed">
+                        <div class="step-counter">2</div>
+                    </div>
+                    <div class="stepper-item active">
+                        <div class="step-counter">3</div>
+                    </div>
+                    <div class="stepper-item">
+                        <div class="step-counter">4</div>
+                    </div>
+                </div>
+                <form class="mt-8 space-y-6" action="#" method="POST">
+                    <input type="hidden" name="remember" value="true">
+                    <div class="rounded-md shadow-sm -space-y-px">
+                        <div>
+                            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">How are you planning to
+                                use Eden?
+                            </h2>
+                        </div>
+                        <div>
+                            <h3 class="mt-6 text-center text-m font-medium text-gray-700">We'll streamline your setup
+                                experience accordingly
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <label for="plan-hobby"
+                            class="relative flex flex-col bg-white p-5 rounded-lg shadow-md cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                <title>user avatar</title>
+                                <style type="text/css">
+                                    * {
+                                        fill: #36c
+                                    }
+                                </style>
+                                <path d="M10 12.5c-5.92 0-9 3.5-9 5.5v1h18v-1c0-2-3.08-5.5-9-5.5z" />
+                                <circle cx="10" cy="6" r="5" />
+                            </svg>
+                            <span class="font-bold text-gray-900">
+                                <span class="text-l">For myself</span>
+                            </span>
+                            <span>
+                                <span class="text-sm font-medium text-gray-500">Write better. Think more clearly. Stay
+                                    organized.</span>
+                            </span>
+                            <input type="radio" name="plan" id="plan-hobby" value="hobby"
+                                class="absolute h-0 w-0 appearance-none" />
+                            <span aria-hidden="true"
+                                class="hidden absolute inset-0 border-2 border-green-500 bg-green-200 bg-opacity-10 rounded-lg">
+                                <span
+                                    class="absolute top-4 right-4 h-6 w-6 inline-flex items-center justify-center rounded-full bg-green-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                        class="h-5 w-5 text-green-600">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                            </span>
+                        </label>
+                        <label for="plan-growth"
+                            class="relative flex flex-col bg-white p-5 rounded-lg shadow-md cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                <title>
+                                    user group
+                                </title>
+                                <circle cx="6" cy="6" r="3" />
+                                <circle cx="14" cy="6" r="3" />
+                                <path
+                                    d="M14 10c3.31 0 6 1.79 6 4v2h-6v-2c0-1.48-1.21-2.77-3-3.46.88-.35 1.91-.54 3-.54zm-8 0c3.31 0 6 1.79 6 4v2H0v-2c0-2.21 2.69-4 6-4z" />
+                            </svg>
+                            <span class="font-bold text-gray-900">
+                                <span class="text-l">With my team</span>
+                            </span>
+                            <span>
+                                <span class="text-sm font-medium text-gray-500">Wikis, docs, tasks & projects, all in one
+                                    place.</span>
+                            </span>
+                            <input type="radio" name="plan" id="plan-growth" value="growth"
+                                class="absolute h-0 w-0 appearance-none" checked />
+                            <span aria-hidden="true"
+                                class="hidden absolute inset-0 border-2 border-green-500 bg-green-200 bg-opacity-10 rounded-lg">
+                                <span
+                                    class="absolute top-4 right-4 h-6 w-6 inline-flex items-center justify-center rounded-full bg-green-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                        class="h-5 w-5 text-green-600">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                    <div>
+                        <button type="submit"
+                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                                <!-- Heroicon name: solid/lock-closed -->
+                                <path fill-rule="evenodd"
+                                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                    clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            Create Workspace
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
